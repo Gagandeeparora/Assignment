@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 	validates :password_confirmation, presence: true
 
 	def convert_email_to_downcase
-	  self.email = email.downcase
+	  self.email = self.email.downcase
 	end
 
 end
