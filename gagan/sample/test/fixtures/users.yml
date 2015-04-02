@@ -1,0 +1,4 @@
+gagandeep:
+  name: Gagandeep
+  email: qwe@qwe.com
+  password_digest: <%= User.digest('password') %>
