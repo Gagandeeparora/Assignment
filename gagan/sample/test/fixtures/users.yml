@@ -2,3 +2,8 @@ gagandeep:
   name: Gagandeep
   email: qwe@qwe.com
   password_digest: <%= User.digest('password') %>
+
+vanika:
+ name: vanika
+ email: vanika@gmail.com
+ password_digest: <%= User.digest('password') %>
