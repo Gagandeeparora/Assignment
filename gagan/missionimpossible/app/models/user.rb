@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :first_name,:last_name, presence: true
+
   include RoleModel
   #attr_accessible :roles, :roles_mask
   roles_attribute :roles_mask

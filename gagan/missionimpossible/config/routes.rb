@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root 'static_pages#home'
 
   get 'help' =>'static_pages#help'
@@ -7,6 +8,15 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
 
   get 'contact' => 'static_pages#contact'
+
+  get 'profile' => 'users#show'
+
+  get 'all_users' => 'users#index' 
+
+
+  devise_scope :user do
+    delete 'logout', to: "devise/sessions#destroy"
+  end
 
   devise_scope :user do
     get "signup", to: "devise/registrations#new"

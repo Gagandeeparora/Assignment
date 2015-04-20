@@ -1,9 +1,13 @@
-<h2>Sign up</h2>
+<h1> Edit User </h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), 
+							html: { method: :put }) do |f| %>
 
-  <div class="field">
+	<%= @user.errors.full_messages.each do |msg| %>
+		<li> <%= msg %> </li>
+	<% end %>
+
+	<div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
@@ -13,16 +17,14 @@
     <%= f.text_field :last_name %>
   </div>
 
-  <div class="field">
+
+ <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
@@ -31,9 +33,3 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
