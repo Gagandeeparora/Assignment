@@ -13,6 +13,13 @@ Rails.application.routes.draw do
 
   get 'all_users' => 'users#index' 
 
+  patch 'user' => 'users#update'
+
+  get 'admin_edit' => 'users#edit'
+
+  get 'delete' => 'users#delete_user'
+
+
 
   devise_scope :user do
     delete 'logout', to: "devise/sessions#destroy"
