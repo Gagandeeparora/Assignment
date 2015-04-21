@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
   get 'delete' => 'users#delete_user'
 
+  get 'assign_candidate' => 'users#assign_candidate'
+
+  post 'assign' => 'users#assign_recruiter_to_candidates'
+
 
 
   devise_scope :user do

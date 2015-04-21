@@ -2,6 +2,12 @@
 
 <%= form_tag('assign_recruiter_to_candidates_path', method: :post) %>
 
-<%= select_tag(:user_id, options_for_select(@users.collect{ |u| [u.first_name, u.id]})) %>
+	<%= select_tag(:user_id, options_for_select(@users.collect{ |u| [u.first_name, u.id]})) %>
 
+	<%= select_tag 'candidates_id', options_from_collection_for_select(@candidates, :candidates_id, :candidate_name), multiple: true, size: '10%' %>
 
+	<div class="actions">
+    <%= submit_tag "assign" %>
+  </div>
+
+<% end %>
