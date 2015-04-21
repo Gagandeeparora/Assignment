@@ -1,8 +1,6 @@
 <h1> Edit User </h1>
 
-<%= form_for @user do |f| %>
-
-	
+<%= form_for @user do |f| %>	
 
 	<%= @user.errors.full_messages.each do |msg| %>
 		<li> <%= msg %> </li>
@@ -32,6 +30,4 @@
     <%= f.submit "Update" %>
   </div>
 
-
 <% end %>
-

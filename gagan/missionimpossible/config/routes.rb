@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :candidates
+
   root 'static_pages#home'
 
   get 'help' =>'static_pages#help'

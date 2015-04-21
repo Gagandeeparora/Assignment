@@ -13,9 +13,6 @@ class User < ActiveRecord::Base
   roles_attribute :roles_mask
   roles :super_admin, :admin, :user
 
-
-  ROLES = ["super_admin", "admin", "user"]
-
   def set_default_role
   	self.role ||= :user
   end
