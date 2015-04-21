@@ -1,0 +1,7 @@
+<h1> Add Candidates to users </h1>
+
+<%= form_tag('assign_recruiter_to_candidates_path', method: :post) %>
+
+<%= select_tag(:user_id, options_for_select(@users.collect{ |u| [u.first_name, u.id]})) %>
+
+

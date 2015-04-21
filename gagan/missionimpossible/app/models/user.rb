@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_and_belongs_to_many :candidates
+
   validates :first_name,:last_name, presence: true
 
   include RoleModel
@@ -13,8 +15,8 @@ class User < ActiveRecord::Base
   roles_attribute :roles_mask
   roles :super_admin, :admin, :user
 
-  def set_default_role
-  	self.role ||= :user
-  end
+  # def set_default_role
+  # 	self.role ||= :user
+  # end
 
 end

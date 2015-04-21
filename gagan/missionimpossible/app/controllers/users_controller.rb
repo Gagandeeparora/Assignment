@@ -28,6 +28,16 @@ class UsersController < ApplicationController
   	end
   end
 
+  def assign_candidate
+    @users = User.where(role: "user")
+  end
+
+  def assign_recruiter_to_candidates
+    @user = User.find(params[:id])
+    @candidates = Candidates.find(params[:id])
+    @user.candidates << @candidates    
+  end
+
   private
 
    def user_params
