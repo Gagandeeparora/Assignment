@@ -30,12 +30,12 @@ class UsersController < ApplicationController
 
   def assign_candidate
     @users = User.where(role: "user")
-    # @candidates = Candidate.all
+    @candidates = Candidate.all
   end
 
   def assign_recruiter_to_candidates
     @user = User.find(params[:id])
-    @candidates = Candidate.find(params[:id])
+    @candidates = Candidate.find(params[:candidates_id])
     @user.candidates << @candidates    
   end
 

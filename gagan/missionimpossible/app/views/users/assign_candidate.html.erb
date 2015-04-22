@@ -4,7 +4,7 @@
 
 	<%= select_tag(:user_id, options_for_select(@users.collect{ |u| [u.first_name, u.id]})) %>
 
-	<%= select_tag 'candidates_id', options_from_collection_for_select(@candidates, :candidates_id, :candidates_name), multiple: true %>
+	<%= select_tag 'candidates_id[]', options_from_collection_for_select(@candidates, 'id', 'name'), multiple: true %>
 
 	<div class="actions">
     <%= submit_tag "assign" %>

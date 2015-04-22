@@ -17,7 +17,7 @@
             <li> <%= link_to "Profile", '#' %> </li>
             <li> <%= link_to "Settings", '#' %> </li>
             <li class = "divider"> </li> -->
-            <% if current_user.role.eql? 'super-admin' %>
+            <% if current_user.role.eql? 'super_admin' %>
               <li> <%= link_to "User Right", all_users_path %> </li>
             <% end %>
             <% unless current_user.role.eql? 'user' %>
