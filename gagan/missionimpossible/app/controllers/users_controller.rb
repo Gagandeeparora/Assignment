@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:user][:user_id])
   	if @user.update_attributes(user_params)
   		redirect_to  all_users_path
-  		flash[:notice] = "Successfully Updates"
+  		flash[:success] = "Successfully Updates"
   	else
   		render 'edit'
   	end
@@ -34,9 +34,14 @@ class UsersController < ApplicationController
   end
 
   def assign_recruiter_to_candidates
-    @user = User.find(params[:id])
-    @candidates = Candidate.find(params[:candidates_id])
-    @user.candidates << @candidates    
+    @user = User.find(params[:user_id])
+    if @candidates = Candidate.find(params[:candidates_id])
+      @user.candidates << @candidates 
+      redirect_to profile_path
+      flash[:success] = "Candidate added"
+    else
+      render assign_candidate_path
+    end   
   end
 
   private
