@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_create :set_default_role
+
   has_and_belongs_to_many :candidates
 
   validates :first_name,:last_name, presence: true
@@ -15,8 +17,11 @@ class User < ActiveRecord::Base
   roles_attribute :roles_mask
   roles :super_admin, :admin, :user
 
-  # def set_default_role
-  # 	self.role ||= :user
-  # end
+  private
+
+    def set_default_role
+    	self.role ||= :user
+    end
+  
 
 end

@@ -1,13 +1,13 @@
 <h1> Add Candidates to users </h1>
 
-<%= form_tag('assign_recruiter_to_candidates_path', method: :post) %>
+<%= form_tag(assign_path, method: :post) do %>
 
 	<%= select_tag(:user_id, options_for_select(@users.collect{ |u| [u.first_name, u.id]})) %>
 
-	<%= select_tag 'candidates_id', options_from_collection_for_select(@candidates, :candidates_id, :candidate_name), multiple: true, size: '10%' %>
+	<%= select_tag 'candidates_id', options_from_collection_for_select(@candidates, :candidates_id, :candidates_name), multiple: true %>
 
 	<div class="actions">
     <%= submit_tag "assign" %>
   </div>
 
-<% end %>
+ <% end %>

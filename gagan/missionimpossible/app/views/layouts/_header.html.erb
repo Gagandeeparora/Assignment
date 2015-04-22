@@ -17,9 +17,12 @@
             <li> <%= link_to "Profile", '#' %> </li>
             <li> <%= link_to "Settings", '#' %> </li>
             <li class = "divider"> </li> -->
+            <% if current_user.role.eql? 'super-admin' %>
+              <li> <%= link_to "User Right", all_users_path %> </li>
+            <% end %>
             <% unless current_user.role.eql? 'user' %>
-            	<li> <%= link_to "User Right", all_users_path %> </li>
             	<li> <%= link_to "Create Candidate",  new_candidate_path %> </li>
+              <li>  <%= link_to "Assign candidate", assign_candidate_path %></li>
             <% end %>
             <li> <%= link_to "Logout", logout_path, method: "delete" %> </li>
          <!--  </ul> -->

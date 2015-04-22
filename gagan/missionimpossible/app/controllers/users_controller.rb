@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 	def index
-		@users = User.all - Array(current_user)
+		@users = User.paginate(:page => params[:page]) - [current_user]
 	end
 
 	def show
@@ -30,11 +30,12 @@ class UsersController < ApplicationController
 
   def assign_candidate
     @users = User.where(role: "user")
+    # @candidates = Candidate.all
   end
 
   def assign_recruiter_to_candidates
     @user = User.find(params[:id])
-    @candidates = Candidates.find(params[:id])
+    @candidates = Candidate.find(params[:id])
     @user.candidates << @candidates    
   end
 
