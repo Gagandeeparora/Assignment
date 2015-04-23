@@ -24,6 +24,6 @@ class CandidatesController < ApplicationController
 
 	private
 		def candidate_params
-			params.require(:candidate).permit(:name, :email, :phone)
+			params.require(:candidate).permit(:name, :email, :phone, :resume)
 		end
 end

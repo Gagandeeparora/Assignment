@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def assign_candidate
     @users = User.where(role: "user")
-    @candidates = Candidate.all
+    @candidates = Candidate.paginate(:page => params[:page])
   end
 
   def assign_recruiter_to_candidates
