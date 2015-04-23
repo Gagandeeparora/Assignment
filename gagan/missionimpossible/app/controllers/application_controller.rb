@@ -16,5 +16,7 @@ class ApplicationController < ActionController::Base
   	devise_parameter_sanitizer.for(:account_update) { |u| 
   		u.permit(:email, :password, :password_confirmation, :current_password, :first_name, :last_name) }
 	end
-
+  # config.paperclip_defaults = {:storage => :fog, :fog_credentials => {:provider => "Local", 
+  # :local_root => "#{Rails.root}/public"}, :fog_directory => "", :fog_host => "localhost"}
+ 
 end
