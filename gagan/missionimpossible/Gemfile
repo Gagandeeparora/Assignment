@@ -44,6 +44,8 @@ gem 'bootstrap-will_paginate'
 #css
 gem 'bootstrap-sass'
 
+gem 'semantic-ui-rails'
+
 gem 'sprockets'
 
 gem 'devise'
