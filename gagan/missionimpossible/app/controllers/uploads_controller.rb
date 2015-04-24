@@ -1,4 +1,7 @@
-class UploadsController < ApplicationController	
+class UploadsController < ApplicationController
+
+	def index	
+	end	
 
 	def new
 		@upload = Upload.new
@@ -7,13 +10,18 @@ class UploadsController < ApplicationController
 	def create
 		@upload = Upload.create( upload_params )
 		if @upload.save
-			redirect_to 
+			redirect_to @upload
 		else
 			render 'new'
+		end
+	end
+
+	def show	
+		@upload = Upload.find(params[:id])	
 	end
 
 	private
-		def file_params
-			params.require(:upload).permit(:picture)
+		def upload_params
+			params.require(:upload).permit(:name, :avatar)
 		end
 end
