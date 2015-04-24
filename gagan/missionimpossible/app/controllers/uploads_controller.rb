@@ -19,7 +19,7 @@ class UploadsController < ApplicationController
 	def show	
 		@upload = Upload.find(params[:id])	
 	end
-
+	
 	private
 		def upload_params
 			params.require(:upload).permit(:name, :avatar)

@@ -19,7 +19,11 @@ class CandidatesController < ApplicationController
 	end
 
 	def show
-		@candidate = Candidate.find(params[:id])		
+		@candidate = Candidate.find(params[:id])	
+	end
+
+	def upload_image
+		
 	end
 
 	private
