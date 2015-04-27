@@ -25,8 +25,19 @@ class CandidatesController < ApplicationController
 	def upload_image
 	end
 
+	def upload_file
+		# @candidate = Candidate.find( params[:candidate_id] )
+		# if @upload = 		
+		# 	redirect_to @candidate
+		# end
+	end
+
 	private
 		def candidate_params
 			params.require(:candidate).permit(:name, :email, :phone)
+		end
+
+		def upload_params
+			params.require(:upload).permit(:name, :avatar)
 		end
 end

@@ -30,6 +30,9 @@ Rails.application.routes.draw do
 
   get 'candidate' => 'candidates#show'
 
+  get 'new_upload' => 'uploads#new'
+
+  get 'upload_image' => 'candidates#upload_image'
 
 
   devise_scope :user do
