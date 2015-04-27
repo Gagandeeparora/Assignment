@@ -2,9 +2,9 @@
 
 <%= form_for @user do |f| %>	
 
-	<%= @user.errors.full_messages.each do |msg| %>
+	<!-- <%= @user.errors.full_messages.each do |msg| %>
 		<li> <%= msg %> </li>
-	<% end %>
+	<% end %> -->
 
 	<%= f.hidden_field :user_id, :value => @user.id %>
 

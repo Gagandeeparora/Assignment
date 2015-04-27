@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   post 'assign' => 'users#assign_recruiter_to_candidates'
 
+  get 'candidates_list' => 'users#list_of_candidates'
+
 
 
   devise_scope :user do

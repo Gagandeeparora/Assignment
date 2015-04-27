@@ -1,0 +1,5 @@
+<h1> List of Candidates </h1>
+
+	<% @candidates.each do |candidate| %>
+		<li> <%= candidate.name %> 	<%= candidate.email %> <%= candidate.phone %> </li>
+	<% end %>
