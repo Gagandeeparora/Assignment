@@ -23,7 +23,6 @@ class CandidatesController < ApplicationController
 	end
 
 	def upload_image
-		
 	end
 
 	private

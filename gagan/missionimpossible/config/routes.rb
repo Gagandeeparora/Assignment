@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   get 'candidates_list' => 'users#list_of_candidates'
 
+  get 'candidate' => 'candidates#show'
+
 
 
   devise_scope :user do

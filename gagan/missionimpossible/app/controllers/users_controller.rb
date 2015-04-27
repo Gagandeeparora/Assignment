@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def list_of_candidates
-     @candidates = Candidate.paginate(:page => params[:page])
+    @candidates = Candidate.paginate(:page => params[:page])
   end
 
   private

@@ -1,5 +1,7 @@
 <h1> List of Candidates </h1>
 
 	<% @candidates.each do |candidate| %>
-		<li> <%= candidate.name %> 	<%= candidate.email %> <%= candidate.phone %> </li>
+		<li> <%= candidate.name %> 	<%= candidate.email %> <%= candidate.phone %> 
+		<%= link_to "Profile", candidate_path(id: candidate.id) %>
+		</li>
 	<% end %>
