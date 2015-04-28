@@ -21,6 +21,7 @@ class CandidatesController < ApplicationController
 	def show
 		@candidate = Candidate.find(params[:id])
 		@upload = @candidate.uploads.first
+		@upload_last = @candidate.uploads.last 
 	end
 
 	def upload_image
