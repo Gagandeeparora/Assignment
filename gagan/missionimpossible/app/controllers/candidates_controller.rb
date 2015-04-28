@@ -42,7 +42,8 @@ class CandidatesController < ApplicationController
 	def upload_resume_file
 		@candidate = Candidate.find( params[:upload][:candidate_id] )
 	  @upload = @candidate.uploads.build( upload_params )
-		if @upload.save	
+	  # require 'pry'; binding.pry
+	 		if @upload.save	
 			redirect_to @candidate
 		end		
 	end

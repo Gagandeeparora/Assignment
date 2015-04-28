@@ -1,12 +1,12 @@
 <h1>Upload Resume</h1>
 
-<%= form_for Upload.new, url: upload_file_path, :html => { :multipart => true }, 
+<%= form_for Upload.new, url: upload_resume_file_path, :html => { :multipart => true }, 
 												 method: :post do |f| %>
 
 <%= f.hidden_field :candidate_id, :value => @candidate.id %>
 
-<div class="field">
-  <%= f.file_field :avatar %>
-  <%= f.submit 'Upload' %>
-</div>
+	<div class="field">
+	  <%= f.file_field :avatar %>
+	  <%= f.submit 'Upload' %>
+	</div>
 <% end %>
