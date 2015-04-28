@@ -1,2 +1,8 @@
 <h1> <%= @candidate.name %> </h1>
-<%= link_to "Upload Pic",  upload_image_path %>
+<% if @upload.present? %>
+	<%= image_tag @upload.avatar.url(:medium) %>
+<% else %>
+	<%= link_to "Upload Picture",  upload_image_path(candidate_id: @candidate.id) %>
+<% end %>
+
+<%= link_to "Upload Resume",  upload_resume_path(candidate_id: @candidate.id) %>

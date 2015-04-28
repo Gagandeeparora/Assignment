@@ -1,8 +1,7 @@
+<h1>Upload Resume</h1>
+
 <%= form_for Upload.new, url: upload_file_path, :html => { :multipart => true }, 
 												 method: :post do |f| %>
-<div>
-	<h1>Upload Picture</h1>
-</div>
 
 <%= f.hidden_field :candidate_id, :value => @candidate.id %>
 

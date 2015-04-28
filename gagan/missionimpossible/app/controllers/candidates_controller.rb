@@ -19,17 +19,32 @@ class CandidatesController < ApplicationController
 	end
 
 	def show
-		@candidate = Candidate.find(params[:id])	
+		@candidate = Candidate.find(params[:id])
+		@upload = @candidate.uploads.first
 	end
 
 	def upload_image
+		@candidate = Candidate.find( params[:candidate_id] )
 	end
 
-	def upload_file
-		# @candidate = Candidate.find( params[:candidate_id] )
-		# if @upload = 		
-		# 	redirect_to @candidate
-		# end
+	def upload_file	
+		@candidate = Candidate.find( params[:upload][:candidate_id] )
+	  @upload = @candidate.uploads.build( upload_params )
+		if @upload.save	
+			redirect_to @candidate
+		end
+	end
+
+	def upload_resume
+		@candidate = Candidate.find( params[:candidate_id] )
+	end
+
+	def upload_resume_file
+		@candidate = Candidate.find( params[:upload][:candidate_id] )
+	  @upload = @candidate.uploads.build( upload_params )
+		if @upload.save	
+			redirect_to @candidate
+		end		
 	end
 
 	private
