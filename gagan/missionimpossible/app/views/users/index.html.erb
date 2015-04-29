@@ -1,7 +1,7 @@
+<h1> List of all users </h1>
+
 <% @users.each do |user| %>
-	<li><%= user.first_name %></li>
-	<li><%= user.last_name %></li>
-	<li><%= user.email %></li>
+	<li><%= user.first_name %> <%= user.last_name %> <%= user.email %></li>
 	<%= link_to "edit", admin_edit_path(id: user.id) %>
 	<%= link_to "delete", delete_path(id: user.id) %>
 <% end %>

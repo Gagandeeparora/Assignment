@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   before_create :set_default_role
 
   has_and_belongs_to_many :candidates
-
+  has_many :interviews
   has_many :uploads
 
   validates :first_name,:last_name, presence: true

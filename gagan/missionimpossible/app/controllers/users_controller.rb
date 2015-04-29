@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def delete_user
   	@user = User.find(params[:id])
   	if @user.destroy
-  		redirect_to 'index'
+  		redirect_to all_users_path
   	end
   end
 
