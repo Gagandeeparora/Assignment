@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     if @candidates = Candidate.find(params[:candidates_id])
       @user.candidates << @candidates 
-      redirect_to profile_path
+      redirect_to interview_schedule_path
       flash[:success] = "Candidate added"
     else
       render assign_candidate_path
@@ -46,6 +46,15 @@ class UsersController < ApplicationController
 
   def list_of_candidates
     @candidates = Candidate.paginate(:page => params[:page])
+  end
+
+  def interview_schedule
+    @candidates = Candidate.all
+    @users = User.all
+  end
+
+  def interview_fixed
+    @candidate = Candidate.find(params[:candidate_id])
   end
 
   private

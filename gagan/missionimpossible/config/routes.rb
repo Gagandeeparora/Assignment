@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
   post 'upload_resume_file' => 'candidates#upload_resume_file'
 
+  get 'interview_schedule' => 'users#interview_schedule'
+
 
   devise_scope :user do
     delete 'logout', to: "devise/sessions#destroy"

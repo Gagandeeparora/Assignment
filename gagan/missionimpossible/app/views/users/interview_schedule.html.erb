@@ -1,0 +1,7 @@
+<h1> Schedule Interview for Candidate </h1>
+
+<%= form_for('#', method: :post) do %>
+	
+	<%= select_tag(:candidate_id, options_for_select(@candidates.collect{ |u| [u.name, u.id]})) %>
+
+<% end %>

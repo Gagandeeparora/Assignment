@@ -26,7 +26,8 @@
             <% end %>
             <% unless current_user.role.eql? 'user' %>
             	<li> <%= link_to "Create Candidate",  new_candidate_path %> </li>
-              <li>  <%= link_to "Assign candidate", assign_candidate_path %></li>
+              <li> <%= link_to "Assign candidate", assign_candidate_path %> </li>
+              <li> <%= link_to "Interview Schedule",  interview_schedule_path %> </li>
             <% end %>
             <li> <%= link_to "Logout", logout_path, method: "delete" %> </li>
         </ul>
