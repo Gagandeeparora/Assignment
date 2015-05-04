@@ -5,6 +5,8 @@
 	<%= link_to "Upload Picture",  upload_image_path(candidate_id: @candidate.id) %>
 <% end %>
 
-<% unless @upload_last.present? %>
+<% if @upload_last.present? %>
+	<%= link_to "Download Resume", '#' %>
+<% else %>
 	<%= link_to "Upload Resume",  upload_resume_path(candidate_id: @candidate.id) %>	
 <% end %>

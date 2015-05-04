@@ -4,4 +4,5 @@
 	
 	<%= select_tag(:candidate_id, options_for_select(@candidates.collect{ |u| [u.name, u.id]})) %>
 
+	<%= datetime_select %>
 <% end %>

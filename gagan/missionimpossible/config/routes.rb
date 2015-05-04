@@ -42,6 +42,8 @@ Rails.application.routes.draw do
 
   get 'interview_schedule' => 'users#interview_schedule'
 
+  get 'download' => 'candidates#download'
+
 
   devise_scope :user do
     delete 'logout', to: "devise/sessions#destroy"

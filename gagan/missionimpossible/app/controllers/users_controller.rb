@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   def interview_fixed
-    @candidate = Candidate.find(params[:candidate_id])
+    # @candidate = Candidate.find(params[:candidate_id])
   end
 
   private
