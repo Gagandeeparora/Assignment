@@ -55,9 +55,19 @@ class UsersController < ApplicationController
 
   def interview_fixed
     @candidate = Candidate.find(params[:candidate_id])
-    @user = User.find(params[:user_id])
-
-
+    # @user = User.find(params[:user_id])
+    # require "pry"; binding.pry
+    datetime = DateTime.new(params[:start_datetime]["datetime(1i)"].to_i, 
+                        params[:start_datetime]["datetime(2i)"].to_i,
+                        params[:start_datetime]["datetime(3i)"].to_i,
+                        params[:start_datetime]["datetime(4i)"].to_i,
+                        params[:start_datetime]["datetime(5i)"].to_i)
+    # logger.info "====#{datetime}"
+    @interview = @candidate.interviews.build(user_id: params[:user_id], 
+      dateandtime: datetime )
+    if @interview.save
+      redirect_to candidates_list_path
+    end
   end
 
   private
@@ -68,6 +78,6 @@ class UsersController < ApplicationController
    end
 
    def interview_params
-     params.require(:interview).permit(:dateandtime)
+     params.require(:interview).permit(:dateandtime, :user_id)
    end
 end

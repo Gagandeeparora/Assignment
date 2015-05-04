@@ -1,6 +1,6 @@
 <h1> Schedule Interview for Candidate </h1>
 
-<%= form_tag( "interview_fixed_path", method: :post) do %>
+<%= form_tag( interview_fixed_path, method: :post) do %>
 	
 	Select Candidate: 
 	<%= select_tag(:candidate_id, options_for_select(@candidates.collect{ |u| 
@@ -11,7 +11,7 @@
 		[u.first_name, u.id]})) %>
 
 	Select Interview Date: 
-	<%= datetime_select :start_datetime, :ampm => true %>
+	<%= datetime_select(:start_datetime, 'datetime', :order => [:day, :month, :year, :hour,:minute]) %>
 
 	<div class="actions">
     <%= submit_tag "Schedule" %>
