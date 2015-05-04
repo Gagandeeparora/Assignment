@@ -2,7 +2,15 @@
 
 <%= form_for('#', method: :post) do %>
 	
-	<%= select_tag(:candidate_id, options_for_select(@candidates.collect{ |u| [u.name, u.id]})) %>
+	Select Candidate: 
+	<%= select_tag(:candidate_id, options_for_select(@candidates.collect{ |u| 
+		[u.name, u.id]})) %>
 
+	Select Recuriter: 
+	<%= select_tag(:user_id, options_for_select(@users.collect{ |u| 
+		[u.first_name, u.id]})) %>
+
+	Select Interview Date: 
 	<%= datetime_select %>
+	
 <% end %>

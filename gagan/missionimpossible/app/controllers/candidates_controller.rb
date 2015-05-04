@@ -49,7 +49,12 @@ class CandidatesController < ApplicationController
 	end
 
 	def download
-    # send_file '/home/letsgomo/Desktop/gagan/resume.zip', :type=>"application/zip", :x_sendfile=>true
+    @candidate = Candidate.find( params[:candidate_id] )
+    @upload_last = @candidate.uploads.last 
+    send_file(@upload_last.avatar.path,
+        :type => 'application/msword',
+        :disposition => 'attachment',
+        :url_based_filename => true)
 	end
 
 	private

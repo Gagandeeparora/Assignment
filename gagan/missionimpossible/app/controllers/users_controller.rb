@@ -49,8 +49,8 @@ class UsersController < ApplicationController
   end
 
   def interview_schedule
-    @candidates = Candidate.all
-    @users = User.all
+    @candidates = Candidate.paginate(:page => params[:page])
+    @users = User.paginate(:page => params[:page])
   end
 
   def interview_fixed
