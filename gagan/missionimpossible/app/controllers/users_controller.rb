@@ -50,11 +50,14 @@ class UsersController < ApplicationController
 
   def interview_schedule
     @candidates = Candidate.paginate(:page => params[:page])
-    @users = User.paginate(:page => params[:page])
+    @users = User.where(role: "user")
   end
 
   def interview_fixed
-    # @candidate = Candidate.find(params[:candidate_id])
+    @candidate = Candidate.find(params[:candidate_id])
+    @user = User.find(params[:user_id])
+
+
   end
 
   private
@@ -62,5 +65,9 @@ class UsersController < ApplicationController
    def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, 
       	:current_password, :first_name, :last_name, :role)
+   end
+
+   def interview_params
+     params.require(:interview).permit(:dateandtime)
    end
 end
