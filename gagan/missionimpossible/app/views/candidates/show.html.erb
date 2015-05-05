@@ -11,3 +11,11 @@
 <% else %>
 	<%= link_to "Upload Resume",  upload_resume_path(candidate_id: @candidate.id) %>	
 <% end %>
+
+<% if @interview.any? %>
+	<h4> Recruiter Assign </h4>
+	<% @interview.each do |d| %>
+		<%= d.user.first_name %>
+		<%= d.dateandtime %>
+	<% end %>
+<% end %>
