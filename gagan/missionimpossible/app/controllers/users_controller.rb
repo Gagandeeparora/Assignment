@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
+    @user = current_user
+    @interview = @user.interviews
   end
 
   def edit

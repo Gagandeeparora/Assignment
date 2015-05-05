@@ -1,1 +1,9 @@
-<h1> <%= current_user.first_name %> </h1>
+<h1> <%= @user.first_name %> </h1>
+
+<% if current_user.role.eql? 'user' %>
+<h4>Candidate for interview</h4>
+	<% @interview.each do |d| %>
+		<li> <%= d.candidate.name %>
+		<%= d.dateandtime %></li>
+	<% end %>
+<% end %> 
