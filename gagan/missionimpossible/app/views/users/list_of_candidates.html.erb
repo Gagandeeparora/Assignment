@@ -1,7 +1,19 @@
 <h1> List of Candidates </h1>
 
+<table border="1" style="width:50%">
+	<tr>
+		<td> Candidate Name</td>
+		<td> Candidate Email</td>
+		<td> Candidate Number</td>
+		<td> Profile Link </td>
+	</tr>
+
 	<% @candidates.each do |candidate| %>
-		<li> <%= candidate.name %> 	<%= candidate.email %> <%= candidate.phone %> 
-		<%= link_to "Profile", candidate_path(id: candidate.id) %>
-		</li>
+		<tr>
+			<td> <%= candidate.name %> </td>
+			<td> <%= candidate.email %> </td>
+			<td> <%= candidate.phone %> </td> 
+			<td> <%= link_to "Profile", candidate_path(id: candidate.id) %> </td>		
+		</tr>
 	<% end %>
+</table>

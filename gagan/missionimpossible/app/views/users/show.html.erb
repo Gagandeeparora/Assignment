@@ -1,9 +1,20 @@
 <h1> <%= @user.first_name %> </h1>
 
 <% if current_user.role.eql? 'user' %>
-<h4>Candidate for interview</h4>
-	<% @interview.each do |d| %>
-		<li> <%= d.candidate.name %>
-		<%= d.dateandtime %></li>
-	<% end %>
+	<h4>Candidate for interview</h4>
+
+	<table border="1" style="width:50%">
+		<tr>
+			<td>Candidate Name</td>
+			<td>Date and Time</td>
+		</tr>
+
+		<% @interview.each do |d| %>
+		
+			<tr>
+				<td> <li> <%= d.candidate.name %> </td>
+				<td> <%= d.dateandtime %></li> </td>
+			</tr>
+		<% end %>
+	</table>
 <% end %> 

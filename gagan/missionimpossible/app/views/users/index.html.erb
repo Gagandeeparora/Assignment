@@ -1,7 +1,20 @@
 <h1> List of all users </h1>
+<table border="1" style="width:50%">
+	<tr>
+		<td> First Name </td>
+		<td> Last Name </td>
+		<td> Email </td>
+		<td> Edit </td>
+		<td> Delete </td>
+	</tr>
 
-<% @users.each do |user| %>
-	<li><%= user.first_name %> <%= user.last_name %> <%= user.email %></li>
-	<%= link_to "edit", admin_edit_path(id: user.id) %>
-	<%= link_to "delete", delete_path(id: user.id) %>
-<% end %>
+	<% @users.each do |user| %>
+	<tr>
+		<td> <%= user.first_name %> </td> 
+		<td> <%= user.last_name %></td> 
+		<td> <%= user.email %> </td>
+		<td> <%= link_to "edit", admin_edit_path(id: user.id) %> </td>
+		<td> <%= link_to "delete", delete_path(id: user.id) %> </td>
+	</tr>
+	<% end %>
+</table>
