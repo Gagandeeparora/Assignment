@@ -15,16 +15,16 @@
 <% if @interview.any? %>
 	<h4> Recruiter Assign </h4>
 
-	<table border = "1">
+	<table border = "1" style="width:30%">
 		<tr>
 			<td> Recruiter Name </td>
 			<td> Interview Date and Time </td>
 		</tr>
 
 		<% @interview.each do |d| %>
-		
+
 		<tr>
-			<td> <%= d.user.first_name %> </td>
+			<td> <%= d.user.first_name %> <%= d.user.last_name %> </td>
 			<td> <%= d.dateandtime %> </td>
 		</tr>
 		<% end %>
