@@ -68,7 +68,7 @@ class UsersController < ApplicationController
     @interview = @candidate.interviews.build(user_id: params[:user_id], 
       dateandtime: datetime )
     if @interview.save
-      redirect_to candidates_list_path
+      redirect_to profile_path
     end
   end
 
