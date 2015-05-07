@@ -15,7 +15,7 @@
 			<tr>
 				<td> <%= d.candidate.name %> </td>
 				<td> <%= d.dateandtime %> </td>
-				<td> <%= link_to "Comment", comment_path %> </td>
+				<td> <%= link_to "Comment", comment_path(id: d.id) %> </td>
 			</tr>
 		<% end %>
 	</table>

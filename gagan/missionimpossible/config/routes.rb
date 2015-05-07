@@ -50,6 +50,8 @@ Rails.application.routes.draw do
 
   get 'comment' => 'users#comment'
 
+  post 'add_comment' => 'users#add_comment'
+
 
   devise_scope :user do
     delete 'logout', to: "devise/sessions#destroy"

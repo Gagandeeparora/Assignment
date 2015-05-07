@@ -77,7 +77,15 @@ class UsersController < ApplicationController
   end
 
   def comment
-    
+    @interview = Interview.find( params[:id] )
+  end
+
+  def add_comment
+    @interview = Interview.find( params[:interview][:interview_id] )
+    @interview.comment = params[:interview][:comment]
+    if @interview.save
+      redirect_to profile_path
+    end
   end
 
   private
@@ -88,6 +96,6 @@ class UsersController < ApplicationController
    end
 
    def interview_params
-     params.require(:interview).permit(:dateandtime, :user_id)
+     params.require(:interview).permit(:dateandtime, :user_id, :comment)
    end
 end
