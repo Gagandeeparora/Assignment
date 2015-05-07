@@ -1,0 +1,17 @@
+<h1> List of All Interviews </h1>
+
+<table border="1" style="width:50%">
+	<tr>
+		<th> Recruiter Name </th>
+		<th> Candidate Name </th>
+		<th> Interview Date Time </th>
+	</tr>
+
+	<% @interviews.each do |d| %>
+	<tr>
+		<td> <%= d.user.first_name %> <%= d.user.last_name %> </td>
+		<td> <%= d.candidate.name %> </td>
+		<td> <%= d.dateandtime %> </td>
+	</tr>
+	<% end %>
+</table>

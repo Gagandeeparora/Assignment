@@ -5,15 +5,17 @@
 
 	<table border="1" style="width:50%">
 		<tr>
-			<td>Candidate Name</td>
-			<td>Date and Time</td>
+			<th> Candidate Name </th>
+			<th> Date and Time </th>
+			<th> Comments </th>
 		</tr>
 
 		<% @interview.each do |d| %>
 		
 			<tr>
-				<td> <li> <%= d.candidate.name %> </td>
-				<td> <%= d.dateandtime %></li> </td>
+				<td> <%= d.candidate.name %> </td>
+				<td> <%= d.dateandtime %> </td>
+				<td> <%= link_to "Comment", comment_path %> </td>
 			</tr>
 		<% end %>
 	</table>

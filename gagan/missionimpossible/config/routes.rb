@@ -46,6 +46,10 @@ Rails.application.routes.draw do
 
   get 'download' => 'candidates#download'
 
+  get 'interview_list' => 'users#interview_list'
+
+  get 'comment' => 'users#comment'
+
 
   devise_scope :user do
     delete 'logout', to: "devise/sessions#destroy"

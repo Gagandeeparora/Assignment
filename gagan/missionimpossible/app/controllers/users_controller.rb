@@ -72,6 +72,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def interview_list
+    @interviews = Interview.paginate(:page => params[:page])
+  end
+
+  def comment
+    
+  end
+
   private
 
    def user_params
