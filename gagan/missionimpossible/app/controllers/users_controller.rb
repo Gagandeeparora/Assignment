@@ -82,8 +82,9 @@ class UsersController < ApplicationController
 
   def add_comment
     @interview = Interview.find( params[:interview][:interview_id] )
-    @interview.comment = params[:interview][:comment]
-    if @interview.save
+    #  @interview.comment = params[:interview][:comment]
+    # if @interview.save
+    if @interview.update_attribute(:comment, params[:interview][:comment])
       redirect_to profile_path
     end
   end

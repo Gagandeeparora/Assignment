@@ -1,10 +1,11 @@
 <h1> List of All Interviews </h1>
 
-<table border="1" style="width:50%">
+<table border="1" style="width:70%">
 	<tr>
 		<th> Recruiter Name </th>
 		<th> Candidate Name </th>
 		<th> Interview Date Time </th>
+		<th> Comment </th>
 	</tr>
 
 	<% @interviews.each do |d| %>
@@ -12,6 +13,11 @@
 		<td> <%= d.user.first_name %> <%= d.user.last_name %> </td>
 		<td> <%= d.candidate.name %> </td>
 		<td> <%= d.dateandtime %> </td>
+		<% if d.comment.nil? %>
+			<td> NO COMMENTS GIVEN </td>
+		<% else %>
+			<td> <%= d.comment%> </td>
+		<% end %>
 	</tr>
 	<% end %>
 </table>

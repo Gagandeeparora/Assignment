@@ -15,7 +15,11 @@
 			<tr>
 				<td> <%= d.candidate.name %> </td>
 				<td> <%= d.dateandtime %> </td>
-				<td> <%= link_to "Comment", comment_path(id: d.id) %> </td>
+				<% if d.comment.nil? %>
+					<td> <%= link_to "Comment", comment_path(id: d.id) %> </td>
+				<% else %>
+					<td> <%= d.comment %> </td>
+				<% end %>
 			</tr>
 		<% end %>
 	</table>
