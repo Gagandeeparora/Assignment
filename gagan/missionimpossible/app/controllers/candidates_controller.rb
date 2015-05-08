@@ -11,10 +11,11 @@ class CandidatesController < ApplicationController
 	def create
 		@candidate = Candidate.new(candidate_params)
   	if @candidate.save
-  		flash[:success] = "New Candidate Profile Created"
   		redirect_to @candidate
+  		flash[:success] = "New Candidate Profile Created"
   	else
-  		render 'new'  		
+  		render 'new'
+  		flash[:notice] = "Error! Try again" 		
   	end		
 	end
 
