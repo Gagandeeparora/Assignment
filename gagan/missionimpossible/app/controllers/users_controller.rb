@@ -89,6 +89,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def upcoming_interviews
+    @user = current_user
+    @interview = @user.interviews
+  end
+
+  def archive 
+    @user = current_user
+    @interview = @user.interviews
+  end
+
   private
 
    def user_params

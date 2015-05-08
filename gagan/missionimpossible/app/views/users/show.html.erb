@@ -1,9 +1,12 @@
 <h1> <%= @user.first_name %> </h1>
 
 <% if current_user.role.eql? 'user' %>
-	<h4>Candidate for interview</h4>
 
-	<table border="1" style="width:50%">
+	<%= link_to "Upcoming Interviews", upcoming_interviews_path %>
+
+	<%= link_to "Archive", archive_path %>
+
+	<!-- <table border="1" style="width:50%">
 		<tr>
 			<th> Candidate Name </th>
 			<th> Date and Time </th>
@@ -22,5 +25,5 @@
 				<% end %>
 			</tr>
 		<% end %>
-	</table>
+	</table> -->
 <% end %> 
