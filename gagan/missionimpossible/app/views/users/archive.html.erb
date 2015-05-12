@@ -3,7 +3,8 @@
 <table border="1" style="width:50%">
 	<tr>
 		<th> Candidate Name </th>
-		<th> Date and Time </th>
+		<th> Interview Date and Time </th>
+		<th> Profile </th>
 		<th> Comment </th>
 	</tr>
 
@@ -11,6 +12,7 @@
 		<% unless d.comment.nil? %>
 			<tr>
 				<td> <%= d.candidate.name %> </td>
+				<td> <%= link_to "Profile", candidate_path(id: d.candidate) %> </td>
 				<td> <%= d.dateandtime %> </td>
 				<td> <%= d.comment %> </td>
 			</tr>

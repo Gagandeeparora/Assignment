@@ -44,4 +44,27 @@ Rails.application.configure do
 
 
   # Paperclip.options[:command_path] = "/usr/local/bin/"
+
+
+  config.action_mailer.smtp_settings = {
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: "localhost:3000",
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: "gagandeep.arora0",
+  password: "deep1991"
+}
+
+
+# ActionMailer::Base.smtp_settings = {
+#   :user_name => 'gagandeep',
+#   :password => 'gagan030691',
+#   :domain => 'localhost:3000',
+#   :address => 'smtp.sendgrid.net',
+#   :port => 587,
+#   :authentication => :plain,
+#   :enable_starttls_auto => true
+# }
+
 end
