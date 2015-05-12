@@ -68,7 +68,7 @@ class UsersController < ApplicationController
     @interview = @candidate.interviews.build(user_id: params[:user_id], 
       dateandtime: datetime )
     if @interview.save
-      UserMailer.interview_mail(@interview).deliver_later
+      # UserMailer.interview_mail(@interview).deliver_later
       redirect_to profile_path
     end
   end
