@@ -24,6 +24,6 @@ class User < ActiveRecord::Base
     def set_default_role
     	self.role ||= :user
     end
-  
-
 end
+
+WillPaginate.per_page = 4

@@ -8,3 +8,5 @@ class Interview < ActiveRecord::Base
 		UserMailer.interview_mail(self).deliver_later  	
   end
 end
+
+WillPaginate.per_page = 4

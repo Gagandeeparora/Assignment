@@ -1,19 +1,27 @@
-<h1> List of Candidates </h1>
+<h2><center> List of Candidates </center> </h2></br>
 
-<table border="1" style="width:50%">
-	<tr>
-		<th> Candidate Name </th>
-		<th> Candidate Email </th>
-		<th> Candidate Number </th>
-		<th> Profile Link </th>
-	</tr>
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th> S.No. </th>
+      <th> Candidate Name </th>
+			<th> Candidate Email </th>
+			<th> Candidate Number </th>
+			<th> Profile Link </th>
+    </tr>
+  </thead>
 
-	<% @candidates.each do |candidate| %>
-		<tr>
-			<td> <%= candidate.name %> </td>
-			<td> <%= candidate.email %> </td>
-			<td> <%= candidate.phone %> </td> 
-			<td> <%= link_to "Profile", candidate_path(id: candidate.id) %> </td>		
-		</tr>
-	<% end %>
-</table>
+  <tbody>
+    <% count = ((params[:page] || 1).to_i - 1) * 4
+    @candidates.each_with_index do |candidate, index| %>
+			<tr class="info">
+				<td> <%= count + index + 1 %> </td>
+				<td> <%= candidate.name.titleize %> </td>
+				<td> <%= candidate.email %> </td>
+				<td> <%= candidate.phone %> </td> 
+				<td> <%= link_to "Profile", candidate_path(id: candidate.id) %> </td>		
+			</tr>
+		<% end %>  
+		<%= will_paginate @candidates %>
+  </tbody>
+</table> 

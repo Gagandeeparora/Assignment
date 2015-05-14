@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
 	def index
-		@users = User.paginate(:page => params[:page]) - [current_user]
+		#@users = User.paginate(:page => params[:page]) - [current_user]
+    @users = User.where.not(id: current_user.id).paginate(:page => params[:page])
 	end
 
 	def show
