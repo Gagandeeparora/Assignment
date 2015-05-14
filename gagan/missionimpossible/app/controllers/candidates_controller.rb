@@ -19,10 +19,14 @@ class CandidatesController < ApplicationController
   	end		
 	end
 
+	def update
+		@candidate = Candidate.find(params[:id])
+	end
+
 	def show
 		@candidate = Candidate.find(params[:id])
-		@upload = @candidate.uploads.where( "avatar_content_type LIKE ?", "image%")
-		@upload_last = @candidate.uploads.where( "avatar_content_type LIKE ?", "application%")
+		@upload = @candidate.uploads.where( "avatar_content_type LIKE ?", "image%").first
+		@upload_last = @candidate.uploads.where( "avatar_content_type LIKE ?", "application%").first
 		@interview = @candidate.interviews.paginate(:page => params[:page])
 	end
 
@@ -32,6 +36,7 @@ class CandidatesController < ApplicationController
 
 	def upload_file	
 		@candidate = Candidate.find( params[:upload][:candidate_id] )
+
 	  @upload = @candidate.uploads.build( upload_params )
 		if @upload.save	
 			redirect_to @candidate
@@ -44,6 +49,7 @@ class CandidatesController < ApplicationController
 
 	def upload_resume_file
 		@candidate = Candidate.find( params[:upload][:candidate_id] )
+		@upload = @candidate.uploads.find_or_initialize_by("avatar_content_type LIKE ?", "image%")
 	  @upload = @candidate.uploads.build( upload_params )
 	 		if @upload.save	
 			redirect_to @candidate
@@ -57,6 +63,18 @@ class CandidatesController < ApplicationController
         :type => 'application/msword',
         :disposition => 'attachment',
         :url_based_filename => true)
+	end
+
+	def edit_image
+		@candidate = Candidate.find( params[:candidate_id] )
+	end
+
+	def edit_image_file
+		# @candidate = Candidate.find( params[:upload][:candidate_id] )
+		# @upload = @candidate.uploads.where( "avatar_content_type LIKE ?", "image%").first
+	 #  @new_upload = 
+	 #  if @upload.save	
+		# 	redirect_to @candidate
 	end
 
 	private

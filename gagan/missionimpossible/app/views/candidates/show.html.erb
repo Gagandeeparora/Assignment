@@ -2,6 +2,7 @@
 
 <% if @upload.present? %>
 	<%= image_tag @upload.avatar.url(:medium) %>
+	<%= link_to "Edit Image", '#' %>
 <% else %>
 	<%= link_to "Upload Picture",  upload_image_path(candidate_id: @candidate.id) %>
 <% end %>
