@@ -2,28 +2,15 @@
 
 <% if current_user.role.eql? 'user' %>
 
-	<%= link_to "Upcoming Interviews", upcoming_interviews_path %>
-
-	<%= link_to "Archive", archive_path %>
-
-	<!-- <table border="1" style="width:50%">
-		<tr>
-			<th> Candidate Name </th>
-			<th> Date and Time </th>
-			<th> Comments </th>
-		</tr>
-
-		<% @interview.each do |d| %>
-		
-			<tr>
-				<td> <%= d.candidate.name %> </td>
-				<td> <%= d.dateandtime %> </td>
-				<% if d.comment.nil? %>
-					<td> <%= link_to "Comment", comment_path(id: d.id) %> </td>
-				<% else %>
-					<td> <%= d.comment %> </td>
-				<% end %>
-			</tr>
-		<% end %>
-	</table> -->
-<% end %> 
+	<div class="col-md-offset-8">
+		<ul class="list-group">
+		  <li class="list-group-item">
+		    <span class="badge"> <%= @count %> </span>
+		    <%= link_to "Upcoming Interviews", upcoming_interviews_path, {:style=>'color:#101010'} %>
+		  </li>
+		 
+		    <%= link_to "Archive", archive_path, class: "list-group-item" %>
+		  </li>
+		</ul>
+	</div>
+<% end %>

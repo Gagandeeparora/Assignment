@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 	def show
     @user = current_user
     @interview = @user.interviews
+    @count = @interview.where(comment: nil).count
   end
 
   def edit

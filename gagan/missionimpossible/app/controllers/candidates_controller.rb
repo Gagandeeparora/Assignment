@@ -21,9 +21,9 @@ class CandidatesController < ApplicationController
 
 	def show
 		@candidate = Candidate.find(params[:id])
-		@upload = @candidate.uploads.first
-		@upload_last = @candidate.uploads.last 
-		@interview = @candidate.interviews
+		@upload = @candidate.uploads.where( "avatar_content_type LIKE ?", "image%")
+		@upload_last = @candidate.uploads.where( "avatar_content_type LIKE ?", "application%")
+		@interview = @candidate.interviews.paginate(:page => params[:page])
 	end
 
 	def upload_image

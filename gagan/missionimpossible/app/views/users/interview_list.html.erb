@@ -1,23 +1,31 @@
 <h1> List of All Interviews </h1>
 
-<table border="1" style="width:70%">
-	<tr>
-		<th> Recruiter Name </th>
-		<th> Candidate Name </th>
-		<th> Interview Date Time </th>
-		<th> Comment </th>
-	</tr>
+<table class="table table-striped table-hover ">
+  <thead>
+		<tr>
+			<th> S.No. </th>
+			<th> Recruiter Name </th>
+			<th> Candidate Name </th>
+			<th> Interview Date Time </th>
+			<th> Comment </th>
+		</tr>
+	</thead>
 
-	<% @interviews.each do |d| %>
-	<tr>
-		<td> <%= d.user.first_name %> <%= d.user.last_name %> </td>
-		<td> <%= d.candidate.name %> </td>
-		<td> <%= d.dateandtime %> </td>
-		<% if d.comment.nil? %>
-			<td> NO COMMENTS GIVEN </td>
-		<% else %>
-			<td> <%= d.comment%> </td>
+	<tbody>
+		<% count = ((params[:page] || 1).to_i - 1) * 4 
+		@interviews.each_with_index do |interview, index| %>
+			<tr>
+				<td> <%= count + index + 1 %> </td>
+				<td> <%= interview.user.first_name %> <%= interview.user.last_name %> </td>
+				<td> <%= interview.candidate.name %> </td>
+				<td> <%= interview.dateandtime %> </td>
+				<% if interview.comment.nil? %>
+					<td> NO COMMENTS GIVEN </td>
+				<% else %>
+					<td> <%= interview.comment%> </td>
+				<% end %>
+			</tr>
 		<% end %>
-	</tr>
-	<% end %>
+		<%= will_paginate @interviews %>
+	<tbody>
 </table>
