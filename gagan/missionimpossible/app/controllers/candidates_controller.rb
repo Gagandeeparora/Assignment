@@ -36,9 +36,14 @@ class CandidatesController < ApplicationController
 
 	def upload_file	
 		@candidate = Candidate.find( params[:upload][:candidate_id] )
-
-	  @upload = @candidate.uploads.build( upload_params )
-		if @upload.save	
+		# @upload = @candidate.uploads.find_or_initialize_by("avatar_content_type LIKE ?", "image%")
+	 #  # @upload = @candidate.uploads.build( upload_params )
+	 #  @upload.avatar = params[:upload][:avatar]
+		# if @upload.save	
+		
+		@upload = @candidate.uploads.where("avatar_content_type LIKE ?", "image%").first_or_initialize 
+		@upload.avatar = params[:upload][:avatar]
+		if @upload.save
 			redirect_to @candidate
 		end
 	end
@@ -49,9 +54,13 @@ class CandidatesController < ApplicationController
 
 	def upload_resume_file
 		@candidate = Candidate.find( params[:upload][:candidate_id] )
-		@upload = @candidate.uploads.find_or_initialize_by("avatar_content_type LIKE ?", "image%")
-	  @upload = @candidate.uploads.build( upload_params )
-	 		if @upload.save	
+		# a = @candidate.uploads.where("avatar_content_type LIKE ?", "image%").first_or_create 
+		# 	a.avatar = params[:upload][:avatar]
+	  # @upload = @candidate.uploads.build( upload_params )
+
+	  @upload = @candidate.uploads.where("avatar_content_type LIKE ?", "application%").first_or_initialize 
+	  @upload.avatar = params[:upload][:avatar]
+	 	if @upload.save	
 			redirect_to @candidate
 		end		
 	end
