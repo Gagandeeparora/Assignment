@@ -1,23 +1,30 @@
-<h2>Upcoming Interviews</h2>
+<h3>Upcoming Interviews</h3>
 
-<table border="1" style="width:50%">
-	<tr>
-		<th> Candidate Name </th>
-		<th> Profile </th>
-		<th> Interview Date and Time </th>
-		<th> Comment </th>
-	</tr>
+<table class="table table-striped table-hover ">
+  <thead>
+		<tr>
+			<th> S.No. </th>
+			<th> Candidate Name </th>
+			<th> Profile </th>
+			<th> Interview Date and Time </th>
+			<th> Comment </th>
+		</tr>
+	</thead>
 
-	<% @interview.each do |d| %>
-		<% if d.comment.nil? %>
-			<tr>
-				<td> <%= d.candidate.name %> </td>
-				<td> <%= link_to "Profile", candidate_path(id: d.candidate) %> </td>
-				<td> <%= d.dateandtime %> </td>
-				<td> <%= link_to "Comment", comment_path(id: d.id) %> </td>
-			</tr>
+	<tbody>
+    <% count = ((params[:page] || 1).to_i - 1) * 4
+			@interview.each_with_index do |d, index| %>
+			<% if d.comment.nil? %>
+				<tr>
+					<td> <%= count + index + 1 %> </td>
+					<td> <%= d.candidate.name %> </td>
+					<td> <%= link_to "Profile", candidate_path(id: d.candidate) %> </td>
+					<td> <%= d.dateandtime %> </td>
+					<td> <%= link_to "Comment", comment_path(id: d.id) %> </td>
+				</tr>
+			<% end %>
 		<% end %>
-	<% end %>
+	</tbody>
 </table>
 
 <%= link_to "Back", profile_path %>
