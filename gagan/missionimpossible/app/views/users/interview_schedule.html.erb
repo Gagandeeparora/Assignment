@@ -1,20 +1,52 @@
-<h1> Schedule Interview for Candidate </h1>
 
-<%= form_tag( interview_fixed_path, method: :post) do %>
-	
-	Select Candidate: 
-	<%= select_tag(:candidate_id, options_for_select(@candidates.collect{ |u| 
-		[u.name, u.id]})) %>
+<%= form_tag( interview_fixed_path, :class => "form-horizontal", method: :post) do %>
 
-	Select Recuriter: 
-	<%= select_tag(:user_id, options_for_select(@users.collect{ |u| 
-		[u.first_name, u.id]})) %>
+	<fieldset>
+		<legend>Schedule Interview for Candidate</legend>
 
-	Select Interview Date: 
-	<%= datetime_select(:start_datetime, 'datetime', :order => [:day, :month, :year, :hour,:minute]) %>
+		<div class="form-group">
+	    <label for="candidate" class="col-lg-2 control-label">Select Candidate: </label>
+	    <div class="col-lg-4">
+	    	<%= select_tag(:candidate_id, options_for_select(@candidates.collect{ |u| 
+			[u.name, u.id]}), class: 'form-control') %>
+	    </div>
+  	</div>
 
-	<div class="actions">
-    <%= submit_tag "Schedule" %>
-  </div>
+  	<div class="form-group">
+	    <label for="recuriter" class="col-lg-2 control-label">Select Recuriter:</label>
+	    <div class="col-lg-4">
+		    <%= select_tag(:user_id, options_for_select(@users.collect{ |u| 
+				[u.first_name, u.id]}), class: 'form-control') %>
+	    </div>
+  	</div>
+
+  	<div class="form-group">
+	    <label for="interview" class="col-lg-2 control-label">Select Interview Date:</label>
+	    <div class="col-lg-6">
+		    <%= datetime_select(:start_datetime, 'datetime', :order => [:day, :month, :year, :hour,:minute], :html=>{:class => 'form-control'}) %>
+	    </div>
+  	</div>
+
+		<!-- Select Candidate: 
+		<%= select_tag(:candidate_id, options_for_select(@candidates.collect{ |u| 
+			[u.name, u.id]})) %>
+
+		Select Recuriter: 
+		<%= select_tag(:user_id, options_for_select(@users.collect{ |u| 
+			[u.first_name, u.id]})) %>
+
+		Select Interview Date: 
+		<%= datetime_select(:start_datetime, 'datetime', :order => [:day, :month, :year, :hour,:minute]) %> -->
+
+	<!-- 	<div class="actions">
+	    <%= submit_tag "Schedule" %>
+	  </div> -->
+
+	  <div class="form-group">
+      <div class="col-lg-6 col-lg-offset-2">
+        <%= submit_tag "Schedule", class: "btn btn-primary" %>
+      </div>
+    </div>
+	</fieldset>
 	
 <% end %>

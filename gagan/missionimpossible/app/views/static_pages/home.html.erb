@@ -1,5 +1,7 @@
 <div class = "center jumbotron">
 
 	<h1>Welcome to Recruitment Process</h1>
-	<%= link_to "Sign Up", signup_path, class: "btn btn-lg btn-primary" %>
+	<% unless user_signed_in? %>
+		<%= link_to "Sign Up", signup_path, class: "btn btn-lg btn-primary" %>
+	<% end %>
 </div>
