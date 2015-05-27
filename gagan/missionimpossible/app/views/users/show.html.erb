@@ -1,15 +1,13 @@
-<h1> <%= @user.first_name %> </h1>
+<h1> <%= @user.first_name %> <%= @user.last_name %> </h1>
 
 <% if current_user.role.eql? 'user' %>
-
 	<div class="col-md-offset-8">
 		<ul class="list-group">
 		  <li class="list-group-item">
 		    <span class="badge"> <%= @count %> </span>
 		    <%= link_to "Upcoming Interviews", upcoming_interviews_path, {:style=>'color:#101010'} %>
 		  </li>
-		 
-		    <%= link_to "Archive", archive_path, class: "list-group-item" %>
+		  <%= link_to "Archive", archive_path, class: "list-group-item" %>
 		  </li>
 		</ul>
 	</div>
