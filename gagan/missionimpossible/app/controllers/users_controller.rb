@@ -94,12 +94,12 @@ class UsersController < ApplicationController
 
   def upcoming_interviews
     @user = current_user
-    @interview = @user.interviews
+    @interview = @user.interviews.paginate(:page => params[:page])
   end
 
   def archive 
     @user = current_user
-    @interview = @user.interviews
+    @interview = @user.interviews.paginate(:page => params[:page])
   end
 
   private
