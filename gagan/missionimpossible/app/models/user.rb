@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   include RoleModel
   #attr_accessible :roles, :roles_mask
-  roles_attribute :roles_mask
+  #roles_attribute :roles_mask
   roles :super_admin, :admin, :user
 
   private
