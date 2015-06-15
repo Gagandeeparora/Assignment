@@ -17,7 +17,7 @@
 			<tr>
 				<td> <%= count + index + 1 %> </td>
 				<td> <%= interview.user.first_name %> <%= interview.user.last_name %> </td>
-				<td> <%= interview.candidate.name %> </td>
+				<td> <%= interview.candidate.name.titleize %> </td>
 				<td> <%= interview.dateandtime %> </td>
 				<% if interview.comment.nil? %>
 					<td> NO COMMENTS GIVEN </td>
