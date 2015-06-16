@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150507082526) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "candidates", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 20150507082526) do
     t.integer "user_id"
   end
 
-  add_index "candidates_users", ["candidate_id"], name: "index_candidates_users_on_candidate_id"
-  add_index "candidates_users", ["user_id"], name: "index_candidates_users_on_user_id"
+  add_index "candidates_users", ["candidate_id"], name: "index_candidates_users_on_candidate_id", using: :btree
+  add_index "candidates_users", ["user_id"], name: "index_candidates_users_on_user_id", using: :btree
 
   create_table "interviews", force: :cascade do |t|
     t.integer  "user_id"
@@ -38,8 +41,8 @@ ActiveRecord::Schema.define(version: 20150507082526) do
     t.text     "comment"
   end
 
-  add_index "interviews", ["candidate_id"], name: "index_interviews_on_candidate_id"
-  add_index "interviews", ["user_id"], name: "index_interviews_on_user_id"
+  add_index "interviews", ["candidate_id"], name: "index_interviews_on_candidate_id", using: :btree
+  add_index "interviews", ["user_id"], name: "index_interviews_on_user_id", using: :btree
 
   create_table "uploads", force: :cascade do |t|
     t.integer  "candidate_id"
@@ -67,13 +70,11 @@ ActiveRecord::Schema.define(version: 20150507082526) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "role"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "interviews", "candidates"
+  add_foreign_key "interviews", "users"
 end
